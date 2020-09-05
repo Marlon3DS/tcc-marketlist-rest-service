@@ -13,11 +13,14 @@ mongoose.connect(strConnection, {
   console.log('MongoDB connected...')
 })
 
-var Product = mongoose.model('productList', new mongoose.Schema({
+var Schema = mongoose.Schema()
+var ProductSchema = new Schema({
   name: {
     type: String
   }
-}))
+})
+
+var Product = mongoose.model('productList', ProductSchema)
 
 app.use(bodyParser.json())
 
