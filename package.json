@@ -1,0 +1,26 @@
+{
+  "name": "marketlist-api",
+  "version": "0.0.1",
+  "description": "REST APIs for Marketlist application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marlon3DS/tcc-marketlist-rest-service.git"
+  },
+  "author": "Alejandro, Gabriel / Santos, Marlon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marlon3DS/tcc-marketlist-rest-service/issues"
+  },
+  "homepage": "https://github.com/Marlon3DS/tcc-marketlist-rest-service#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
