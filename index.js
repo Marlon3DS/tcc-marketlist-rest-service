@@ -13,7 +13,7 @@ mongoose.connect(strConnection, {
   console.log('MongoDB connected...')
 })
 
-var Schema = mongoose.Schema()
+var Schema = mongoose.Schema
 var ProductSchema = new Schema({
   name: {
     type: String
