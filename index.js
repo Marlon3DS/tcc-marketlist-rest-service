@@ -36,9 +36,13 @@ app.get('/Product', (req, res) => {
 })
 
 app.post('/Product', (req, res) => {
+  var body = req.body
   let product = new Product(req.body)
   product.save({}, (err, product) => {
-    res.send(product)
+    res.json({
+      product,
+      body
+    })
   })
 })
 
