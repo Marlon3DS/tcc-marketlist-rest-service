@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
-const port = 3000
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
 
 app.get('/', (req, res) => {
   if (req.query.texto) res.send(req.query.texto)
