@@ -30,22 +30,50 @@ app.get('/', (req, res) => {
 })
 
 app.get('/Product', (req, res) => {
-  Product.find((err, products) => {
-    res.json(products)
-  })
+  if (req.query.id) {
+    Product.findById(req.query.id, (error, product) => {
+      if (error) {
+        res.json({
+          message: `Request failed to retrieve Product with ${req.query.id}`,
+          error
+        })
+        return
+      }
+      res.json(product)
+    })
+  } else {
+    Product.find((error, products) => {
+      if (error) {
+        res.json({
+          message: 'Request failed to retrieve Products',
+          error
+        })
+        return
+      }
+      res.json(products)
+    })
+  }
 })
 
 app.post('/Product', (req, res) => {
-  var body = req.body
+  if (!req.body || req.body == '') {
+    res.statusCode = 422
+    res.send('Invalid or missing request body')
+    return
+  }
   let product = new Product(req.body)
-  product.save({}, (err, product) => {
-    res.json({
-      product,
-      body
-    })
+  product.save({}, (error, product) => {
+    if (error) {
+      res.json({
+        message: 'Request failed in the POST method',
+        error
+      })
+      return
+    }
+    res.send(product)
   })
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Server start at http://localhost:${port}`)
 })
